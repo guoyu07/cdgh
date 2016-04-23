@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<schema name="user" version="1.5">
+   <field name="_version_" type="long" indexed="true" stored="true"/>
+   <field name="pageUrl" type="string" indexed="true" stored="true" required="true" multiValued="false" />
+   <field name="projectName" type="text_general" indexed="true" stored="true"/>
+   <field name="detailUrl" type="text_general" indexed="true" stored="true"/>
+   <field name="date" type="text_general" indexed="true" stored="true"/>
+   <field name="imageUrls" type="text_general" indexed="true" stored="true" multiValued="true"/>
+   <uniqueKey>id</uniqueKey>
+
+   <fieldType name="long" class="solr.TrieLongField" precisionStep="0" positionIncrementGap="0"/>
+   <fieldType name="string" class="solr.StrField" sortMissingLast="true" />
+   <fieldType name="text_general" class="solr.TextField" positionIncrementGap="100">
+      <analyzer type="index">
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+      </analyzer>
+      <analyzer type="query">
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+      </analyzer>
+    </fieldType>
+</schema>
